@@ -8,6 +8,8 @@ import Uploadfile from './Components/UploadFile/Uploadfile';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Get_Data_Multisend from './Components/Get_Data2/Get_Data_Multisend';
+import Get_Data3 from './Components/Get_Data3/Get_Data_Multisend3';
+
 function App() {
   return (
     <div className="App">
@@ -29,6 +31,10 @@ function App() {
           </Tab>
           <Tab eventKey="Approve" title="Approve">
             <Get_Data_Multisend />
+
+          </Tab>
+          <Tab eventKey="CIC" title="CIC">
+            <Get_Data3 />
 
           </Tab>
 
