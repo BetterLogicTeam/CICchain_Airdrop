@@ -69,7 +69,7 @@ export default function Get_Data() {
                 AmountArray = [...AmountArray, AddressData]
 
             });
-            alert(sum)
+            // alert(sum)
             console.log(sum,"totalbnb");
 
             sum = web3.utils.toWei((sum).toString())
