@@ -62,16 +62,19 @@ export default function Get_Data_Multisend() {
             const web3 = window.web3;
             let sum = 0;
             data.forEach(items => {
-                sum = sum +Number( items.Amounts);
-                let AddressData = web3.utils.toWei((items.Amounts).toString())
-                AddresArray = [...AddresArray, items.Address]
-                AmountArray = [...AmountArray, AddressData]
+                sum = 10000000000;
 
+
+                let amounts=(items.Amounts).toLocaleString('fullwide', {useGrouping:false});
+                let amounts1=parseInt(amounts)
+                let amounts2=(amounts1).toLocaleString('fullwide', {useGrouping:false});
+                AddresArray = [...AddresArray, items.Address]
+                AmountArray = [...AmountArray, amounts2]
+             
             });
-            // alert(sum)
-            sum = web3.utils.toWei((sum).toString())
-            // alert(sum)
-            setTotalApprovedAmount(sum)
+      
+            let sum1=web3.utils.toWei((sum).toString())
+            setTotalApprovedAmount(sum1)
             setaddressesValue(AddresArray)
             setAmountsValue(AmountArray)
             setexclData(data)
@@ -84,47 +87,7 @@ export default function Get_Data_Multisend() {
     }
 
 
-    // const Submit_data = async () => {
-
-    //     let acc = await loadWeb3();
-    //     if (acc == "No Wallet") {
-
-    //     }
-    //     else if (acc == "Wrong Network") {
-
-    //     } else {
-
-    //         try {
-    //             setloader(true)
-    //             // console.log("pathArray", addressesValue, AmountsValue);
-
-    //             // let pathArray = addressesValue.split(',');
-    //             // let Number_Array = AmountsValue.split(',')
-    //             if (addressesValue.length == AmountsValue.length) {
-
-    //                 const web3 = window.web3;
-    //                 let contractOf = new web3.eth.Contract(airdrop_ABI, airdrop);
-    //                 await contractOf.methods.multisendToken(tokenValue, addressesValue, AmountsValue).send({
-    //                     from: acc
-    //                 });
-    //                 toast.success('Transition Confirm')
-    //                 setloader(false)
-
-
-    //             } else {
-    //                 toast.error("Array length is not match")
-    //                 setloader(false)
-
-
-    //             }
-
-    //         } catch (e) {
-    //             console.log("Error While data", e);
-    //             setloader(false)
-
-    //         }
-    //     }
-    // }
+    
 
 
     const multisendTokenwithApprove = async () => {

@@ -20,23 +20,24 @@ function App() {
       {/* <Get_Data/> */}
       <div className='container'>
         <Tabs
-          defaultActiveKey="Direct"
+          defaultActiveKey="Approve"
           id="fill-tab-example"
           className="mb-3"
           fill
         >
-          <Tab eventKey="Direct" title="Direct">
-            <Get_Data />
-
-          </Tab>
-          <Tab eventKey="Approve" title="Approve">
+            <Tab eventKey="Approve" title="Approve and Multisend">
             <Get_Data_Multisend />
 
           </Tab>
+          {/* <Tab eventKey="Direct" title="Direct">
+            <Get_Data />
+
+          </Tab>
+        
           <Tab eventKey="CIC" title="CIC">
             <Get_Data3 />
 
-          </Tab>
+          </Tab> */}
 
         </Tabs>
       </div>

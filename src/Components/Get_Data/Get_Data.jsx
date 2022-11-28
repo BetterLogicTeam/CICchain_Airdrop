@@ -22,7 +22,7 @@ export default function Get_Data() {
 
     console.log(excelFile);
     const fileType = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']
-    const fileType2 = ['text/csv']
+    const fileType2 = ['text/csv/xlsx']
     const handlefile = async (e) => {
 
         let selectFile = e.target.files[0]
@@ -62,15 +62,23 @@ export default function Get_Data() {
             const web3 = window.web3;
             let sum = 0;
             data.forEach(items => {
-                sum = sum + items.Amounts;
-                let AddressData = web3.utils.toWei((items.Amounts).toString())
+                let num = items.Amounts;
+                sum = sum + num;
+                let amounts=(items.Amounts).toLocaleString('fullwide', {useGrouping:false});
+                let amounts1=parseInt(amounts)
+                let amounts2=(amounts1).toLocaleString('fullwide', {useGrouping:false});
+
+                // let AddressData = web3.utils.toWei((num).toString())
+
+                
                 AddresArray = [...AddresArray, items.Address]
-                AmountArray = [...AmountArray, AddressData]
+                AmountArray = [...AmountArray, amounts2]
 
             });
             // alert(sum)
-            sum = web3.utils.toWei((sum).toString())
+            // sum = web3.utils.toWei((sum).toString())
             // alert(sum)
+            
             setTotalApprovedAmount(sum)
             setaddressesValue(AddresArray)
             setAmountsValue(AmountArray)
@@ -105,6 +113,7 @@ export default function Get_Data() {
                     const web3 = window.web3;
                     let contractOf = new web3.eth.Contract(airdrop_ABI, airdrop);
                     let ownerAdress = await contractOf.methods.owner().call()
+                   console.log(typeof(AmountsValue),"type");
                     if (ownerAdress == acc) {
                         await contractOf.methods.multisendToken(tokenValue, addressesValue, AmountsValue).send({
                             from: acc
