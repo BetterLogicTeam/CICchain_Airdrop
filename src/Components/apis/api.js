@@ -3,17 +3,17 @@ let isItConnected = false;
 // const chainId = 137 // Polygon Mainnet
 const networks = {
   bsc: {
-    chainId: `0x${Number(1252).toString(16)}`,
-    chainName: "Crazy Internet Coin",
+    chainId: `0x${Number(1353).toString(16)}`,
+    chainName: "CIC",
     nativeCurrency: {
-      name: "GoerliETH",
-      symbol: "Crazy Internet Coin",
+      name: "CIC",
+      symbol: "CIC",
       decimals: 18,
     },
     rpcUrls: [
-      "https://testapi.cicscan.com"
+      "https://xapi.cicscan.com/"
     ],
-    blockExplorerUrls: ["https://testnet.cicscan.com"],
+    blockExplorerUrls: ["https://cicscan.com"],
   },
 };
 const changeNetwork = async ({ networkName }) => {
@@ -60,7 +60,7 @@ export const loadWeb3 = async () => {
       await window.web3.eth.getChainId((err, netId) => {
         // console.log("networkId==>", netId);
         switch (netId.toString()) {
-          case "1252":
+          case "1353":
             isItConnected = true;
             break;
           default:
